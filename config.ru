@@ -6,5 +6,5 @@ require_relative './config/environment'
 
 use Rack::MethodOverride
 # use CustomersController
-# use FlowersController
+use FlowersController
 run ApplicationController
