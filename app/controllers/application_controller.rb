@@ -5,15 +5,15 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secrets, "secret"
+    set :session_secret, "secret"
   end
 
   get '/signup' do
-    # if logged_in?
-    #   redirect "/flowers"
-    # else
+    if logged_in?
+      redirect "/bouquets"
+    else
       erb :signup
-    # end
+    end
   end
 
   post '/signup' do
@@ -22,14 +22,16 @@ class ApplicationController < Sinatra::Base
       redirect "/signup"
     else
       @customer = Customer.create(username: params[:username], email: params[:email], password: params[:password])
+      @customer.save
       session[:user_id] = @customer.id
-      redirect "/flowers"
+      # binding.pry
+      redirect "/bouquets"
     end
   end
 
   get '/login' do
     if logged_in?
-      redirect "/flowers"
+      redirect "/bouquets"
     else
       erb :login
     end
@@ -37,43 +39,33 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     @customer = Customer.find_by(:username => params[:username])
+      # binding.pry
     if @customer && @customer.authenticate(params[:password])
       session[:user_id] = @customer.id
-      # redirect "/flowers"
+      redirect "/bouquets"
     else
       redirect "/login"
     end
   end
 
-  # get '/signout' do
-  #   if logged_in?
-  #     erb :signout
-  #   else
-  #     redirect "/login"
-  #   end
-  # end
-
-  get '/signout' do
-    # if logged_in?
+  get '/logout' do
+    if logged_in?
       session.clear
       redirect "/login"
-    # else
-      # redirect "/flowers"
-    # end
+    else
+      redirect "/bouquets"
+    end
 
     end
 
   helpers do
-
     def current_customer
-      Customer.find_by(session[:user_id])
+      Customer.find_by(id: session[:user_id])
     end
 
     def logged_in?
       !!current_customer
     end
-
-
   end
 
 end

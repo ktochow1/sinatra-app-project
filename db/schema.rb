@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,23 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190604131337) do
+ActiveRecord::Schema.define(version: 2019_06_12_194312) do
 
-  create_table "bouqets", force: :cascade do |t|
-    t.string  "occasion"
+  create_table "bouquets", force: :cascade do |t|
+    t.string "name"
+    t.string "occassion"
+    t.string "accessories"
+    t.string "flower_name"
+    t.integer "flower_quantity"
     t.integer "customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "email"
     t.string "username"
+    t.string "email"
     t.string "password_digest"
-  end
-
-  create_table "flowers", force: :cascade do |t|
-    t.string  "flower"
-    t.string  "bouqet"
-    t.integer "customer_id"
   end
 
 end
