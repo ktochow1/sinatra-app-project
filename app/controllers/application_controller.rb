@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if logged_in?
-      redirect "/bouquets"
+      redirect "/bouquets/new"
     else
       erb :login
     end
