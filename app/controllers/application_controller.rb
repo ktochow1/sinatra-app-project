@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
 
   get '/signup' do
     if logged_in?
-      redirect "/bouquets"
+      redirect "/bouquets/new"
     else
       erb :signup
     end
@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if logged_in?
-      redirect "/bouquets/new"
+      erb :'/bouquets/create_new'
     else
       erb :login
     end
