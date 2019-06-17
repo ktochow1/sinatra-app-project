@@ -1,6 +1,6 @@
 class Bouquet < ActiveRecord::Base
   belongs_to :customer
-  validates :flower_quantity, numericality: true
+   # validates :flower_quantity, numericality: true
 
   def slug
    name.downcase.gsub(" ", "-")

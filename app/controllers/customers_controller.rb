@@ -1,9 +1,11 @@
 class CustomersController < ApplicationController
 
-  # get '/bouquets/:id' do
-  #   @bouquet = Bouquet.find(params[:id])
-  #   erb :'/bouquets/show'
-  # end
+  get '/bouquets/customer/:id' do
+    @customer = Customer.find(params[:id])
+    @customer.current_customer 
+    @bouquets = Customer.bouquets
+    erb :'/bouquets/show'
+  end
 
 end
 
