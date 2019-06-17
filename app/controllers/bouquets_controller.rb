@@ -6,28 +6,33 @@ class BouquetsController < ApplicationController
        @bouquet = Bouquet.all
         # binding.pry
        erb :'/bouquets/index'
-    else
+     else
       redirect "/login"
     end
   end
 
-  # get '/bouquets/new' do
-  #   erb :'/bouquets/create_new'
-  # end
+  get '/bouquets/new' do
+    erb :'/bouquets/create_new'
+  end
 
-  # post '/bouquets' do
-  #   @bouquet = Bouquet.create(name: params[:name], occassion: params[:occassion], accessories: params[:accessories], flower_name: params[:flower_name], flower_quantity: params[:flower_quantity], customer_id: current_customer.id)
-  #   erb :'/bouquets/show'
-  #  end
-    #
-    # get '/bouquets/:id' do
-    #   @bouquet = Bouquet.find(params[:slug])
-    #   erb :'/bouquets/show'
-    # end
-    #
-    # patch '/bouquets/edit/:id' do
-    #
-    # end
+  post '/bouquets' do
+    @bouquet = Bouquet.create(name: params[:name], occassion: params[:occassion], accessories: params[:accessories], flower_name: params[:flower_name], flower_quantity: params[:flower_quantity], customer_id: current_customer.id)
+    binding.pry
+    redirect "/bouquets/#{@bouquet.id}"
+  end
+
+  get '/bouquets/:id' do
+    @bouquet = Bouquet.find(params[:id])
+    if current_customer.bouquets.include?(@bouquet)
+      erb :'/bouquets/show'
+    else
+      redirect "/logout"
+    end
+  end
+
+    patch '/bouquets/edit/:id' do
+
+    end
 
     delete '/bouquets/:id' do
       @bouquet = Bouquet.find(params[:id])

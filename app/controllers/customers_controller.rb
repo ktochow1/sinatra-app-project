@@ -1,9 +1,9 @@
 class CustomersController < ApplicationController
 
-  get '/bouquets/:slug' do
-    @bouquet = Bouquet.find_by_slug(params[:slug])
-    erb :'/bouquets/show'
-  end
+  # get '/bouquets/:id' do
+  #   @bouquet = Bouquet.find(params[:id])
+  #   erb :'/bouquets/show'
+  # end
 
 end
 

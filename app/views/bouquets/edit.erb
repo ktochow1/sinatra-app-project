@@ -1,6 +1,6 @@
 Edit <%=@bouquet.name%>
 <br>
-<form action="/bouquets/<%=@bouquet.slug%>" method="POST">
+<form action="/bouquets/<%=@bouquet.id%>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
 <br>
   <label>Name: </label>
@@ -21,5 +21,4 @@ Edit <%=@bouquet.name%>
 
 <input type="submit" value="Save">
 
-</form>
 </form>
