@@ -2,11 +2,10 @@
 
 <h2>Pick your Bouquet</h2>
 
-<% Bouquet.all.each do |bouquet| %>
-<a href="/bouquets/<%=bouquet.id%>"> <%= bouquet.name %></a> <br>
+<% @bouquet.all.each do |bouquet| %>
+  <a href="/bouquets/<%=bouquet.id%>"> <%= bouquet.name %></a> <br>
 <%end%>
 
 <form action="bouquets/new">
- <!-- this should have a list of user's bouquets, if they don't have them, give message -->
   <input type="submit" value="Create New Bouquet!">
 </form>

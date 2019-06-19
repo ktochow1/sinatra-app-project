@@ -38,7 +38,6 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     @customer = Customer.find_by(:username => params[:username])
-      # binding.pry
     if @customer && @customer.authenticate(params[:password])
       session[:user_id] = @customer.id
       redirect "/bouquets"
@@ -54,8 +53,7 @@ class ApplicationController < Sinatra::Base
     else
       redirect "/bouquets"
     end
-
-    end
+  end
 
   helpers do
     def current_customer
