@@ -1,5 +1,8 @@
 class Customer < ActiveRecord::Base
   has_many :bouquets
+  validates :username, uniqueness: true
+  validates :email, uniqueness: true
+  # validates :email, uniqeness: true
   validates_associated :bouquets
   has_secure_password
 

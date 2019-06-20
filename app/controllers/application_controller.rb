@@ -1,4 +1,7 @@
 require './config/environment'
+# register Sinatra::Flash
+# require 'sinatra/base'
+# require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
   configure do
@@ -7,6 +10,7 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "secret"
   end
+
 
   get '/signup' do
     if logged_in?
@@ -20,6 +24,7 @@ class ApplicationController < Sinatra::Base
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect "/signup"
     else
+
       @customer = Customer.create(username: params[:username], email: params[:email], password: params[:password])
       @customer.save
       session[:user_id] = @customer.id

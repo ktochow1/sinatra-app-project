@@ -39,9 +39,15 @@ class BouquetsController < ApplicationController
   end
 
   patch '/bouquets/:id' do
+    
     @bouquet = Bouquet.find(params[:id])
     if logged_in? && current_customer.bouquets.include?(@bouquet)
       @bouquet.update(params[:bouquet])
+      # binding.pry
+      # if !params[:flower_quantity].scan(/\d/).empty?
+      #   redirect "/bouquets/#{@bouquet.id}"
+      #
+      # end
       erb :'/bouquets/show'
     else
     redirect "/login"
