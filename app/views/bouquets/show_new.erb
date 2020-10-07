@@ -1,0 +1,20 @@
+<h1>Your Bouquet Info</h1>
+<br>
+<!-- <form action="" method="POST">
+  <input type="hidden" name="_method" value="patch" id="hidden"> -->
+ <h2> Name: <%= @bouquet.name.capitalize %> </h2>
+ <br>
+ <h2> Occassion: <%= @bouquet.occassion.capitalize %> </h2>
+ <br>
+ <h2> Accessories: <%= @bouquet.accessories.capitalize %> </h2>
+ <br>
+ <h2> Flower Type: <%= @bouquet.flower_name.capitalize %> </h2>
+ <br>
+ <h2> Number of Flowers: <%= @bouquet.flower_quantity %> </h2>
+<br>
+
+ <form method="get" action="/bouquets">
+    <button type="submit">Your Collection</button>
+  </form>
+
+  

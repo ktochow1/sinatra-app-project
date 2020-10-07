@@ -1,0 +1,6 @@
+Common Threats
+1. cross-site scripting (XSS) - malicious script injected through form or field
+2. cross-site request forgery (CSRF) - when malicious code is injected when user is already authenticated in trusted site
+3. sensitive data exposure - api doesn't hide user data correctly
+4. injection attacks - untrusted data sent to interpreted as command/query
+5. obfuscation - someone pretending their not

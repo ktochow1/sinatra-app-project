@@ -1,0 +1,11 @@
+<h2>Your Collection</h2>
+
+<h2>Pick your Bouquet</h2>
+
+<% @bouquet.all.each do |bouquet| %>
+  <a href="/bouquets/<%=bouquet.id%>"> <%= bouquet.name %></a> <br>
+<%end%>
+
+<form action="bouquets/new">
+  <input type="submit" value="Create New Bouquet!">
+</form>

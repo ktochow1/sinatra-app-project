@@ -1,0 +1,24 @@
+Edit <%=@bouquet.name%>
+<br>
+<form action="/bouquets/<%=@bouquet.id%>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+<br>
+  <label>Name: </label>
+  <input type="text" name="bouquet[name]" value="<%=@bouquet.name%>">
+<br>
+  <label>Occassion: </label>
+  <input type="text" name="bouquet[occassion]" value="<%=@bouquet.occassion%>">
+<br>
+  <label>Accessories: </label>
+  <input type="text" name="bouquet[accessories]" value="<%=@bouquet.accessories%>">
+<br>
+  <label>Flower Type: </label>
+  <input type="text" name="bouquet[flower_name]" value="<%=@bouquet.flower_name%>">
+<br>
+  <label>Number of Flowers: </label>
+  <input type="text" name="bouquet[flower_quantity]" value="<%=@bouquet.flower_quantity%>">
+<br>
+
+<input type="submit" value="Save">
+
+</form>
